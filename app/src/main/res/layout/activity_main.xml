@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:text="Hello World!" />
+
+    <Button
+        android:id="@+id/sdk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="启动aar包中的Activity"
+         />
+
+    <Button
+        android:id="@+id/loadPicture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="加 载 图 片"
+         />
+
+    <Button
+        android:id="@+id/tomatoClock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" 番 茄 计 时"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/myCharts"
+        android:text="My Charts"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/signInTestDrive"
+        android:text="每 日 签 到"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/learningReport"
+        android:text="学 习 报 告"/>
+
+</LinearLayout>
