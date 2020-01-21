@@ -12,6 +12,10 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.alltestapplication.AllTestMainActivity;
+import com.example.test2project.charts.ChartsActivity;
+import com.example.test2project.charts.LearningReportActivity;
+import com.example.test2project.plans.PlanListActivity;
+import com.example.test2project.tomato.TomatoClockActivity;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -35,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button buttonCharts;
     private Button buttonSignInTestDrive;
     private Button buttonLearningReport;
+    private Button buttonPlanList;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonCharts = findViewById(R.id.myCharts);
         buttonSignInTestDrive = findViewById(R.id.signInTestDrive);
         buttonLearningReport = findViewById(R.id.learningReport);
+        buttonPlanList = findViewById(R.id.buttonPlanList);
 
         imageView = findViewById(R.id.image);
         String url = "https://profile.csdnimg.cn/7/4/E/2_qq_43529443";
@@ -64,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonCharts.setOnClickListener(this);
         buttonSignInTestDrive.setOnClickListener(this);
         buttonLearningReport.setOnClickListener(this);
+        buttonPlanList.setOnClickListener(this);
     }
 
     private void downLoadImage(String url){
@@ -147,6 +154,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
          case R.id.learningReport:{
              Toast.makeText(MainActivity.this, "Learning Report!", Toast.LENGTH_SHORT).show();
              startActivity(new Intent(MainActivity.this, LearningReportActivity.class));
+             break;
+         }
+         case R.id.buttonPlanList:{
+             Toast.makeText(MainActivity.this, "Learning Report!", Toast.LENGTH_SHORT).show();
+             startActivity(new Intent(MainActivity.this, PlanListActivity.class));
              break;
          }
          default:break;

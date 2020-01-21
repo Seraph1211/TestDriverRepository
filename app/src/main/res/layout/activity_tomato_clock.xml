@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.test2project.TomatoClockActivity">
+    tools:context="com.example.test2project.tomato.TomatoClockActivity">
 
-    <com.example.test2project.TomatoView
+    <com.example.test2project.tomato.TomatoView
         android:layout_marginTop="50dp"
         android:id="@+id/clockView"
         android:layout_width="411dp"

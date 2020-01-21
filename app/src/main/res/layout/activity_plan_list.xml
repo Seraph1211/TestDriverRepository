@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".plans.PlanListActivity">
+
+    <!--未完成任务-->
+    <LinearLayout
+        android:id="@+id/linearUndone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barPlanList">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:paddingLeft="12dp"
+            android:gravity="left|center"
+            android:background="#D3D3D3"
+            android:textColor="#838383"
+            android:text="未完成"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerViewOfUndonePlanList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
+    <!--已完成任务-->
+    <LinearLayout
+        android:id="@+id/linearDone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/linearUndone"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:paddingLeft="12dp"
+            android:gravity="left|center"
+            android:background="#D3D3D3"
+            android:textColor="#838383"
+            android:text="已完成"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerViewOfDonePlanList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabAddPlan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:layout_margin="20dp"
+        android:src="@drawable/ic_add"
+        app:backgroundTint="#009688"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/barPlanList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <ImageButton
+            android:id="@+id/buttonPlanListBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/back2_black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="24sp"
+            android:text="任务收集箱"/>
+
+    </android.support.v7.widget.Toolbar>
+
+</android.support.constraint.ConstraintLayout>

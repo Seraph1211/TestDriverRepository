@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".LearningReportActivity">
+    tools:context=".charts.LearningReportActivity">
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
         >
 
         <ImageButton
-            android:id="@+id/buttonChartsBack"
+            android:id="@+id/buttonLearningReportBack"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/back2_black"/>
