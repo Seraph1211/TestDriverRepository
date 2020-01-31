@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button buttonSignInTestDrive;
     private Button buttonLearningReport;
     private Button buttonPlanList;
+    private Button buttonBase64;
+    private Button buttonQRCode;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonSignInTestDrive = findViewById(R.id.signInTestDrive);
         buttonLearningReport = findViewById(R.id.learningReport);
         buttonPlanList = findViewById(R.id.buttonPlanList);
+        buttonBase64 = findViewById(R.id.buttonBase64);
+        buttonQRCode = findViewById(R.id.buttonQRCode);
 
         imageView = findViewById(R.id.image);
         String url = "https://profile.csdnimg.cn/7/4/E/2_qq_43529443";
@@ -71,6 +75,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonSignInTestDrive.setOnClickListener(this);
         buttonLearningReport.setOnClickListener(this);
         buttonPlanList.setOnClickListener(this);
+        buttonBase64.setOnClickListener(this);
+        buttonQRCode.setOnClickListener(this);
     }
 
     private void downLoadImage(String url){
@@ -159,6 +165,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
          case R.id.buttonPlanList:{
              Toast.makeText(MainActivity.this, "Learning Report!", Toast.LENGTH_SHORT).show();
              startActivity(new Intent(MainActivity.this, PlanListActivity.class));
+             break;
+         }
+         case R.id.buttonBase64:{
+             Toast.makeText(MainActivity.this, "Base64 Image!", Toast.LENGTH_SHORT).show();
+             startActivity(new Intent(MainActivity.this, Base64Activity.class));
+             break;
+         }
+         case R.id.buttonQRCode:{
+             Toast.makeText(MainActivity.this, "Quick Response Code!", Toast.LENGTH_SHORT).show();
+             startActivity(new Intent(MainActivity.this, QRCodeActivity.class));
              break;
          }
          default:break;

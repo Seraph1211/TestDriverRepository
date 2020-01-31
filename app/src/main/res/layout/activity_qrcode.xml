@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".QRCodeActivity">
+
+    <ImageView
+        android:id="@+id/imageQRCode"
+        android:layout_margin="10dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <EditText
+        android:hint="输入文字"
+        android:gravity="center"
+        android:id="@+id/editCreateQRCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/buttonCreateQRCode"
+        android:text="生成二维码"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="5dp"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/buttonScanQRCode"
+        android:text="扫描二维码"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="5dp"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_margin="10dp"
+        android:hint="扫描结果"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textQRCodeResult"
+        />
+
+</LinearLayout>

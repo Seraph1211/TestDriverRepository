@@ -1,9 +1,11 @@
 package com.example.test2project.plans;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,9 +17,6 @@ import android.widget.Toast;
 
 import com.example.test2project.R;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class PlanItemAdapter extends RecyclerView.Adapter<PlanItemAdapter.PlanItemViewHolder> {
@@ -64,7 +63,7 @@ public class PlanItemAdapter extends RecyclerView.Adapter<PlanItemAdapter.PlanIt
                 int position = planItemViewHolder.getAdapterPosition();
                 PlanBean bean = planBeanList.get(position);
                 Toast.makeText(context, bean.getTitle()+position, Toast.LENGTH_SHORT).show();
-                startPlanInfoActivity(bean);
+                startPlanInfoActivity(bean, position);
             }
         });
 
@@ -80,10 +79,32 @@ public class PlanItemAdapter extends RecyclerView.Adapter<PlanItemAdapter.PlanIt
         return planBeanList.size();
     }
 
-    public void startPlanInfoActivity(PlanBean planBean){
+    public void startPlanInfoActivity(PlanBean planBean, int position){
         Log.d(TAG, "startPlanInfoActivity: "+planBean);
         Intent intent = new Intent(context, PlanInfoActivity.class);
+        intent.putExtra("position", position);
         intent.putExtra("itemInfo", planBean);
-        context.startActivity(intent);
+
+        Activity activity = (AppCompatActivity)context;
+
+        activity.startActivityForResult(intent, PlanInfoActivity.plan_info_activity);
+    }
+
+    public void setItem(PlanBean planBean, int position){
+        planBeanList.set(position, planBean);
+        notifyDataSetChanged();
+    }
+
+    //在指定位置添加item
+    public void addItem(PlanBean planBean){
+        planBeanList.add(planBean);
+        notifyDataSetChanged();
+    }
+
+    //删除指定位置的item
+    public void removeItem(int position){
+        this.planBeanList.remove(position); //删除数据源，移除集合中下标为position的数据
+        notifyItemRemoved(position);  //刷新被删除的地方
+        notifyItemRangeChanged(position, getItemCount()); //刷新被删除的数据，以及后面的数据
     }
 }

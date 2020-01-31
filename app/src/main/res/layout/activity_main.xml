@@ -68,6 +68,20 @@
                 android:id="@+id/buttonPlanList"
                 android:text="学 习 计 划"/>
 
+            <Button
+                android:id="@+id/buttonBase64"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="使用base64加密与解码图片"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonQRCode"
+                android:textAllCaps="false"
+                android:text="QR Code"/>
+
+
         </LinearLayout>
 
     </ScrollView>

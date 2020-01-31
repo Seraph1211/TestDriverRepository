@@ -51,8 +51,8 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"/>
 
-        <TextView
-            android:id="@+id/textTitleOfPlanInfo"
+        <EditText
+            android:id="@+id/editTextTitleOfPlanInfo"
             android:gravity="center|left"
             android:paddingLeft="12dp"
             android:text="大力出奇迹"
@@ -78,8 +78,8 @@
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <TextView
-        android:id="@+id/textPlanInfo"
+    <EditText
+        android:id="@+id/editTextPlanInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="18sp"
