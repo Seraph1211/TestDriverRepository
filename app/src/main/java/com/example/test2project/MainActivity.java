@@ -1,5 +1,6 @@
 package com.example.test2project;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -42,6 +43,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button buttonPlanList;
     private Button buttonBase64;
     private Button buttonQRCode;
+    private Button buttonProgressDialog;
+    private Button buttonStepCounter;
+    private Button buttonBanner;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +62,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonPlanList = findViewById(R.id.buttonPlanList);
         buttonBase64 = findViewById(R.id.buttonBase64);
         buttonQRCode = findViewById(R.id.buttonQRCode);
+        buttonProgressDialog = findViewById(R.id.buttonProgressDialog);
+        buttonStepCounter = findViewById(R.id.buttonStepCounter);
+        buttonBanner = findViewById(R.id.buttonBanner);
 
         imageView = findViewById(R.id.image);
         String url = "https://profile.csdnimg.cn/7/4/E/2_qq_43529443";
@@ -77,6 +84,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonPlanList.setOnClickListener(this);
         buttonBase64.setOnClickListener(this);
         buttonQRCode.setOnClickListener(this);
+        buttonProgressDialog.setOnClickListener(this);
+        buttonStepCounter.setOnClickListener(this);
+        buttonBanner.setOnClickListener(this);
     }
 
     private void downLoadImage(String url){
@@ -177,7 +187,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
              startActivity(new Intent(MainActivity.this, QRCodeActivity.class));
              break;
          }
+         case R.id.buttonProgressDialog:{
+             startActivity(new Intent(MainActivity.this, ProgressDialogActivity.class));
+             break;
+         }
+         case R.id.buttonStepCounter:{
+             startActivity(new Intent(MainActivity.this, StepCounterActivity.class));
+             break;
+         }
+         case R.id.buttonBanner:{
+             startActivity(new Intent(MainActivity.this, BannerActivity.class));
+             break;
+         }
          default:break;
      }
     }
+
 }

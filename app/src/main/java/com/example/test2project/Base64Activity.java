@@ -32,10 +32,15 @@ public class Base64Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(Base64Activity.this, "load image!", Toast.LENGTH_SHORT).show();
-                loadBase64Image(str1, imageBase64);
-
+                //loadBase64Image(str1, imageBase64);
+                Bitmap bitmap = BitmapFactory.decodeResource(getApplication().getResources(), R.drawable.add);
+                String str2 = "data:image/jpg;base64,"+encodeImageToBase64String(bitmap);
+                Log.d(TAG, "onCreate: base64 String: "+str2);
+                loadBase64Image(str2, imageBase64);
             }
         });
+
+
     }
 
     public void loadBase64Image(String base64String, ImageView imageView){
@@ -47,6 +52,7 @@ public class Base64Activity extends AppCompatActivity {
         imageView.setImageBitmap(decodedByte);
     }
 
+    //加密
     public String encodeImageToBase64String(Bitmap bitmap) {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         //读取图片到ByteArrayOutputStream

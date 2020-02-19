@@ -81,6 +81,25 @@
                 android:textAllCaps="false"
                 android:text="QR Code"/>
 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonProgressDialog"
+                android:text="Progress Dialog"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonStepCounter"
+                android:text="计步器"
+                />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonBanner"
+                android:text="Banner"/>
 
         </LinearLayout>
 
