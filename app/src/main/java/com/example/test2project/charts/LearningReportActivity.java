@@ -29,6 +29,7 @@ import lecho.lib.hellocharts.view.PieChartView;
 
 /**
  * 第一次启动活动，统一加载本周数据，并将相应按钮的字体颜色设为蓝色
+ * 当按钮被点击时，将之前被点击的按钮设为灰色，刚被点击的按钮字体设为蓝色，并init统计图，加载相应的数据
  */
 public class LearningReportActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -287,7 +288,6 @@ public class LearningReportActivity extends AppCompatActivity implements View.On
         lineChartOfLearningTime.setLineChartData(lineChartData);
         lineChartOfLearningTime.setVisibility(View.VISIBLE);
     }
-
 
     @Override
     public void onClick(View v) {

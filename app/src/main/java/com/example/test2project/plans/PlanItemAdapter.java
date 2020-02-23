@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +26,22 @@ public class PlanItemAdapter extends RecyclerView.Adapter<PlanItemAdapter.PlanIt
     private List<PlanBean> planBeanList;
     private Context context;
 
+    private RecyclerView mRecyclerView;
+
+    private CheckedCallBack callBack;
+
+    interface CheckedCallBack{
+        void beChecked(int position, PlanBean bean);
+        void unChecked(int position, PlanBean bean);
+    }
+
+    public CheckedCallBack getCallBack() {
+        return callBack;
+    }
+
+    public void setCallBack(CheckedCallBack callBack) {
+        this.callBack = callBack;
+    }
 
     public PlanItemAdapter(Context context, List<PlanBean> planBeanList){
         this.context = context;
@@ -53,10 +71,13 @@ public class PlanItemAdapter extends RecyclerView.Adapter<PlanItemAdapter.PlanIt
 
     @Override
     public void onBindViewHolder(@NonNull final PlanItemViewHolder planItemViewHolder, int i) {
-        PlanBean bean = planBeanList.get(planItemViewHolder.getAdapterPosition());
+        final PlanBean bean = planBeanList.get(planItemViewHolder.getAdapterPosition());
         planItemViewHolder.checkBoxIsFinished.setChecked(bean.isFinished());
         planItemViewHolder.textPlanTitle.setText(bean.getTitle());
 
+        /**
+         * 为标题注册点击事件
+         */
         planItemViewHolder.textPlanTitle.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -68,8 +89,25 @@ public class PlanItemAdapter extends RecyclerView.Adapter<PlanItemAdapter.PlanIt
         });
 
 
-        if(bean.isFinished()){
+        /**
+         * 为checkBox注册点击事件
+         * 为避免出现 java.lang.IllegalStateException: Cannot call this method while RecyclerView is Computing a layout or scrolling 错误
+         * 需要先判断recyclerView是否在Computing a layout or scrolling
+         */
+        planItemViewHolder.checkBoxIsFinished.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(mRecyclerView!=null && !mRecyclerView.isComputingLayout()){  //判断Computing a layout or scrolling
+                    if(isChecked){  //如果被选中
+                        callBack.beChecked(planItemViewHolder.getAdapterPosition(), bean);
+                    }else {
+                        callBack.unChecked(planItemViewHolder.getAdapterPosition(),bean);
+                    }
+                }
+            }
+        });
 
+        if(bean.isFinished()){
             planItemViewHolder.textPlanTitle.setTextColor(Color.parseColor("#C7C7C7"));
         }
     }
@@ -87,7 +125,7 @@ public class PlanItemAdapter extends RecyclerView.Adapter<PlanItemAdapter.PlanIt
 
         Activity activity = (AppCompatActivity)context;
 
-        activity.startActivityForResult(intent, PlanInfoActivity.plan_info_activity);
+        activity.startActivityForResult(intent, PlanInfoActivity.PLAN_INFO_ACTIVITY);
     }
 
     public void setItem(PlanBean planBean, int position){
@@ -101,10 +139,32 @@ public class PlanItemAdapter extends RecyclerView.Adapter<PlanItemAdapter.PlanIt
         notifyDataSetChanged();
     }
 
+    public RecyclerView getRecyclerView() {
+        return mRecyclerView;
+    }
+
+    public void setRecyclerView(RecyclerView recyclerView) {
+        this.mRecyclerView = recyclerView;
+    }
+
+    @Override
+    public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+        mRecyclerView = recyclerView;
+    }
+
     //删除指定位置的item
     public void removeItem(int position){
-        this.planBeanList.remove(position); //删除数据源，移除集合中下标为position的数据
-        notifyItemRemoved(position);  //刷新被删除的地方
-        notifyItemRangeChanged(position, getItemCount()); //刷新被删除的数据，以及后面的数据
+        planBeanList.remove(position); //删除数据源，移除集合中下标为position的数据
+
+        //notifyItemRemoved(position);  //刷新被删除的地方
+        //notifyItemRangeChanged(position, getItemCount()); //刷新被删除的数据，以及后面的数据
+
+
+        if(!mRecyclerView.isComputingLayout()){
+            notifyDataSetChanged();
+        }
     }
+
 }
+

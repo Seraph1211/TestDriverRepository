@@ -9,18 +9,12 @@
         android:id="@+id/editTitleAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_gray_stroke"
-        android:hint="待做事项"
-        android:layout_margin="5dp"
-        />
-
-    <EditText
-        android:id="@+id/editInfoAdd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/shape_gray_stroke"
-        android:hint="详情"
-        android:layout_margin="5dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="30dp"
+        android:background="@null"
+        android:hint="准备些什么？"
+        android:paddingLeft="10dp"
+        android:textSize="20sp"
         />
 
 </LinearLayout>

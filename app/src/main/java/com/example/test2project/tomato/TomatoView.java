@@ -38,6 +38,8 @@ public class TomatoView extends View {
     private float offsetX;
     private float offsetY;
     private boolean isStarted;
+    private ValueAnimator valueAnimator;
+    private CountDownTimer countDownTimer;
 
     public TomatoView(Context context) {
         super(context);
@@ -167,7 +169,7 @@ public class TomatoView extends View {
             return;
         }
         isStarted = true;
-        ValueAnimator valueAnimator = ValueAnimator.ofFloat(0, 1.0f);
+        valueAnimator = ValueAnimator.ofFloat(0, 1.0f);
         valueAnimator.setDuration(countdownTime * 1000);
         valueAnimator.setInterpolator(new LinearInterpolator());
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -182,7 +184,7 @@ public class TomatoView extends View {
 
         final boolean[] isStart = {false};
 
-        new CountDownTimer(countdownTime * 1000 + 1000, 1000) {
+        countDownTimer = new CountDownTimer(countdownTime * 1000 + 1000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 if(!isStart[0]){
@@ -204,5 +206,23 @@ public class TomatoView extends View {
                 invalidate();
             }
         }.start();
+    }
+
+    public void cancel(){
+        valueAnimator.cancel();
+        countDownTimer.cancel();
+        mColor = Color.BLACK;
+        sweepVelocity = 0;
+        textTime="00:00";
+        isStarted = false;
+        invalidate();
+    }
+
+    public boolean isStarted(){
+        return isStarted;
+    }
+
+    public int getCountdownTime(){
+        return countdownTime;
     }
 }
